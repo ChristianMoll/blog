@@ -1,59 +1,52 @@
-import React from "react"
+import { FC } from "react"
 import { GetStaticProps } from "next"
 import Layout from "../components/Layout"
 import Post, { PostProps } from "../components/Post"
+import prisma from '../lib/prisma';
+import Head from 'next/head'
+import styles from './index.module.scss';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const feed = [
-    {
-      id: "1",
-      title: "Prisma is the perfect ORM for Next.js",
-      content: "[Prisma](https://github.com/prisma/prisma) and Next.js go _great_ together!",
-      published: false,
+  const feed = await prisma.post.findMany({
+    where: { published: true },
+    include: {
       author: {
-        name: "Nikolas Burk",
-        email: "burk@prisma.io",
+        select: { name: true },
       },
-    },
-  ]
-  return { 
-    props: { feed }, 
-    revalidate: 10 
-  }
-}
+    }
+  });
+  return {
+    props: { feed },
+    revalidate: 10,
+  };
+};
 
 type Props = {
   feed: PostProps[]
 }
 
-const Blog: React.FC<Props> = (props) => {
+const Blog: FC<Props> = (props) => {
   return (
-    <Layout>
-      <div className="page">
-        <h1>Public Feed</h1>
-        <main>
-          {props.feed.map((post) => (
-            <div key={post.id} className="post">
-              <Post post={post} />
-            </div>
-          ))}
-        </main>
-      </div>
-      <style jsx>{`
-        .post {
-          background: white;
-          transition: box-shadow 0.1s ease-in;
-        }
-
-        .post:hover {
-          box-shadow: 1px 1px 3px #aaa;
-        }
-
-        .post + .post {
-          margin-top: 2rem;
-        }
-      `}</style>
-    </Layout>
+    <div className={styles.Header}>
+      <Head>
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8"></meta>
+        <meta name="description" content="Personal website of web developer Christian Moll"></meta>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <title>Christian Moll</title>
+      </Head>
+      <Layout>
+        <div className="page">
+          <h1>Public Feed</h1>
+          <main>
+            {props.feed.map((post) => (
+              <div key={post.id} className={styles.Post}>
+                <Post post={post} />
+              </div>
+            ))}
+          </main>
+        </div>
+      </Layout>
+    </div>
   )
 }
 
