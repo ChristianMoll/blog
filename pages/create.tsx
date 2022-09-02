@@ -43,7 +43,7 @@ const Draft: FC = () => {
           />
           <input disabled={!content || !title} type="submit" value="Create" />
           <a className={styles.Back} href="#" onClick={() => Router.push('/')}>
-            or Cancel
+            Cancel
           </a>
         </form>
       </div>

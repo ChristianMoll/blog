@@ -1,0 +1,13 @@
+.Post {
+    color: inherit;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    padding: 20px;
+
+    h2 {
+        margin: 0 0 8px 0;
+    }
+}

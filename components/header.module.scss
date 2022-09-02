@@ -1,0 +1,94 @@
+.Nav {
+    display: flex;
+    padding: 2rem;
+    align-items: center;
+    max-width: 800px;
+
+    button {
+        background: none;
+        font-family: inherit;
+        font-size: 1em;
+    }
+
+    @media only screen and (max-width: 600px) {
+        flex-direction: column;
+    }
+}
+
+.Left {
+    .Bold {
+        font-weight: bold;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--geist-foreground);
+        display: inline-block;
+        font-size: 18px;
+        padding: 0.5rem 1rem;
+    }
+
+    a+a {
+        margin-left: 1rem;
+    }
+
+    a[data-active='true'] {
+        color: var(--geist-foreground);
+    }
+
+    @media only screen and (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+
+        a+a {
+            margin-left: 0;
+        }
+
+        text-align: center;
+
+        a {
+            padding: 0 0 0 0;
+            margin: 0 0 8px 0;
+        }
+    }
+}
+
+.Right {
+    margin-left: 8px;
+
+    a {
+        text-decoration: none;
+        color: var(--geist-foreground);
+        display: inline-block;
+        border: 1px solid var(--geist-foreground);
+        padding: 0.5rem 1rem;
+        border-radius: 3px;
+        background: none;
+        font-size: 18px;
+    }
+
+    a+a {
+        margin-left: 1rem;
+    }
+
+    p {
+        display: inline-block;
+        padding-right: 1rem;
+    }
+
+    button {
+        border: none;
+    }
+
+    @media only screen and (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+
+        a+a {
+            margin-left: 0;
+        }
+
+        text-align: center;
+    }
+}

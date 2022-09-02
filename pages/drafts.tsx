@@ -47,7 +47,7 @@ const Drafts: FC<Props> = (props) => {
 
   return (
     <Layout>
-      <div className="page">
+      <div className={styles.Page}>
         <h1>My Drafts</h1>
         <main>
           {props.drafts.map((post) => (

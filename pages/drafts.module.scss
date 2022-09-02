@@ -1,6 +1,7 @@
 .Post {
-    background: var(--geist-background);
+    background: #F3F4F6;
     transition: box-shadow 0.1s ease-in;
+    height: 240px;
 
     &:hover {
         box-shadow: 1px 1px 3px #aaa;
@@ -8,5 +9,15 @@
 
     &+.Post {
         margin-top: 2rem;
+    }
+}
+
+.Page {
+    width: 640px;
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+        text-align: center;
     }
 }

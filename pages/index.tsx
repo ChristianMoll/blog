@@ -35,7 +35,7 @@ const Blog: FC<Props> = (props) => {
         <title>Christian Moll</title>
       </Head>
       <Layout>
-        <div className="page">
+        <div className={styles.Page}>
           <h1>Public Feed</h1>
           <main>
             {props.feed.map((post) => (
